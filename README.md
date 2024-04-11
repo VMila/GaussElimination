@@ -1,41 +1,58 @@
-# GaussElimination
+# Gauss Elimination
 ---
 
-Ivan Capeli Navas
+Ivan Capeli Navas 
 
-João Paulo Migliatti
+João Paulo Migliatti 
 
-Matheus Yuiti Moriy Miata
+Matheus Yuiti Moriy Miata 
 
-Vitor Milanez
+Vitor Milanez 
 
 ---
-Compilação de generateFile.c:
+- generateFile.c:
+``` Bash
+# Compilação e execução do programa generateFile.c
+gcc -o gen generateFile.c && ./gen
 
-! gcc -o gen generateFile.c && ./gen
+# Vizualização da saída gerada no arquivo gauss.in
+cat gauss.in
+```
 
-! cat gauss.in
+- gauss.c:
+``` Bash
+# Compilação do programa sequencial gauss.c
+gcc -O3 -Wall -o gauss gauss.c
 
-Compilação de gauss.c:
+# Execução do programa com os tempos de execução
+echo 'Results: '
+time ./gauss
 
-! gcc -O3 -Wall -o gauss gauss.c
+# Vizualização da saída gerada no arquivo gauss.out
+cat gauss.out
+```
 
-! echo 'Results: '
+- gaussOMP.c:
+``` Bash
+# Compilação do programa paralelo gaussOMP.c em ambiente multicore
+gcc -O3 -Wall -o gaussOMP gaussOMP.c -fopenmp
 
-! time ./gauss
+# Execução do programa com os tempos de execução
+echo 'Results: '
+time ./gaussOMP
 
-Compilação de gaussOMP.c:
+# Vizualização da saída gerada no arquivo gaussOMP.out
+cat gaussOMP.out
+```
 
-! gcc -O3 -Wall -o gaussOMP gaussOMP.c -fopenmp
+- gaussCUDA.c:
+``` Shell
+# Compilação do programa paralelo gaussCUDA.cu em GPU
+nvcc gaussCUDA.cu -o gaussCUDA -O3
 
-! echo 'Results: '
+# Execução do programa com as informações da execução em GPU e CPU
+nvprof --unified-memory-profiling off ./gaussCUDA
 
-! time ./gaussOMP
-
-! cat gaussOMP.out
-
-Compilação de gaussCUDA.c:
-
-! nvcc gaussCUDA.cu -o gaussCUDA -O3
-
-! nvprof --unified-memory-profiling off ./gaussCUDA
+# Vizualização da saída gerada no arquivo gaussCUDA.out
+cat gaussCUDA.out 
+```
